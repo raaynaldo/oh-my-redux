@@ -1,40 +1,40 @@
-const redux = require("redux");
+const redux = require('redux');
 const createStore = redux.createStore;
 
 const initialSate = {
-  counter: 0,
+    counter: 0,
 };
 
 // Reducer
 const rootReducer = (state = initialSate, action) => {
-  if (action.type === "INC_COUNTER") {
-    return {
-      ...state,
-      counter: state.counter + 1,
-    };
-  }
+    if (action.type === 'INC_COUNTER') {
+        return {
+            ...state,
+            counter: state.counter + 1,
+        };
+    }
 
-  if (action.type === "ADD_COUNTER") {
-    return {
-      ...state,
-      counter: state.counter + action.value,
-    };
-  }
+    if (action.type === 'ADD_COUNTER') {
+        return {
+            ...state,
+            counter: state.counter + action.value,
+        };
+    }
 
-  return state;
+    return state;
 };
 
 // Store
 const store = createStore(rootReducer);
+console.log(store);
 console.log(store.getState());
 
 // Subscription
 store.subscribe(() => {
-  console.log("[Subscription]", store.getState());
+    console.log('[Subscription]', store.getState());
 });
 
 // Dispatching Action
-store.dispatch({ type: "INC_COUNTER" });
-store.dispatch({ type: "ADD_COUNTER", value: 10 });
+store.dispatch({ type: 'INC_COUNTER' });
+store.dispatch({ type: 'ADD_COUNTER', value: 10 });
 console.log(store.getState());
-
